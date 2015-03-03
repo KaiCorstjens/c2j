@@ -6,7 +6,9 @@ package stamboom.storage;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.*;
 import java.util.Properties;
+import stamboom.controller.StamboomController;
 import stamboom.domain.Administratie;
 
 public class SerializationMediator implements IStorageMediator {
@@ -31,9 +33,20 @@ public class SerializationMediator implements IStorageMediator {
         if (!isCorrectlyConfigured()) {
             throw new RuntimeException("Serialization mediator isn't initialized correctly.");
         }
+        String filepath = props.getProperty("file");
+        // check if file exists
         
-        // todo opgave 
-        return null;
+        File file = new File(filepath);
+        if (file.exists())
+        {
+            StamboomController sc = new StamboomController();
+            sc.deserialize(file);
+            return sc.getAdministratie();
+        }
+        else
+        {
+            return null;
+        }
     }
 
     @Override
@@ -41,8 +54,11 @@ public class SerializationMediator implements IStorageMediator {
         if (!isCorrectlyConfigured()) {
             throw new RuntimeException("Serialization mediator isn't initialized correctly.");
         }
-
-        // todo opgave 2
+        String filepath = props.getProperty("file");
+        // check if file exists
+        File file = new File(filepath);
+        StamboomController sc = new StamboomController();
+        sc.serialize(file);
   
     }
 

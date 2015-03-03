@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="Kai-Laptop" name="stamboom.domain.DomeinTest" skipped="0" tests="11" time="0.11" timestamp="2015-03-03T11:33:34">
+<testsuite errors="0" failures="1" hostname="Kai-Laptop" name="stamboom.domain.DomeinTest" skipped="0" tests="11" time="0.14" timestamp="2015-03-03T11:48:28">
   <properties>
     <property name="netbeans.autoupdate.country" value="US" />
     <property name="javafx.binarycss" value="false" />
@@ -12,7 +12,7 @@
     <property name="ant.core.lib" value="C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant.jar" />
     <property name="javadoc.windowtitle" value="" />
     <property name="javafx.preloader.enabled" value="false" />
-    <property name="user.dir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)" />
+    <property name="user.dir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)" />
     <property name="java.vm.version" value="25.31-b07" />
     <property name="javafx.native.bundling.type" value="none" />
     <property name="libs.MySQLDriver.classpath" value="C:\Program Files\NetBeans 8.0.2\ide\modules\ext\mysql-connector-java-5.1.23-bin.jar" />
@@ -49,7 +49,7 @@
     <property name="user.name" value="Kai" />
     <property name="copylibs.rebase" value="true" />
     <property name="libs.swing-layout.maven-pom" value="" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner stamboom.domain.DomeinTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\test\results\TEST-stamboom.domain.DomeinTest.xml crashfile=C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\junitvmwatcher6091037205848702601.properties propsfile=C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\junit2624656315331016547.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner stamboom.domain.DomeinTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=true formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\test\results\TEST-stamboom.domain.DomeinTest.xml crashfile=C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\junitvmwatcher5189420940850485381.properties propsfile=C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\junit2409783206429521557.properties" />
     <property name="auxiliary.org-netbeans-modules-editor-indent.text.x-java.CodeStyle.project.wrapAnnotations" value="WRAP_NEVER" />
     <property name="build.classes.dir" value="build/classes" />
     <property name="netbeans.accept_license_class" value="org.netbeans.license.AcceptLicense" />
@@ -85,7 +85,7 @@
     <property name="javac.debug" value="true" />
     <property name="javadoc.splitindex" value="true" />
     <property name="file.separator" value="\" />
-    <property name="javac.includesfile.binary" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\null378001235" />
+    <property name="javac.includesfile.binary" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\null1373471594" />
     <property name="libs.junit_4.maven-pom" value="" />
     <property name="mkdist.disabled" value="false" />
     <property name="javac.test.processorpath" value="C:\Program Files\NetBeans 8.0.2\ide\modules\ext\mysql-connector-java-5.1.23-bin.jar:C:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar:C:\Program Files\Java\jdk1.8.0_31\jre/lib/javaws.jar:C:\Program Files\Java\jdk1.8.0_31\jre/lib/deploy.jar:C:\Program Files\Java\jdk1.8.0_31\jre/lib/plugin.jar:build/classes" />
@@ -99,7 +99,7 @@
     <property name="libs.junit.classpath" value="C:\Program Files\NetBeans 8.0.2\java\modules\ext\junit-3.8.2.jar" />
     <property name="libs.hibernate4-persistencemodelgen.javadoc" value="" />
     <property name="libs.jaxb.javadoc" value="C:\Program Files\NetBeans 8.0.2\ide\docs\jaxb-api-doc.zip" />
-    <property name="javac.includes.binary" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\test\classes\stamboom\domain\DomeinTest.class" />
+    <property name="javac.includes.binary" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\test\classes\stamboom\domain\DomeinTest.class" />
     <property name="ant.home" value="C:\Program Files\NetBeans 8.0.2\extide\ant" />
     <property name="libs.junit_4.src" value="C:\Program Files\NetBeans 8.0.2\java\docs\junit-4.10-sources.jar" />
     <property name="javafx.run.height" value="600" />
@@ -112,10 +112,10 @@
     <property name="libs.spring-framework400.src" value="" />
     <property name="libs.PostgreSQLDriver.src" value="" />
     <property name="sun.arch.data.model" value="64" />
-    <property name="basedir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)" />
+    <property name="basedir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)" />
     <property name="libs.jpa20-persistence.maven-pom" value="" />
     <property name="jar.compress" value="false" />
-    <property name="ant.file.StamboomProject-impl" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\nbproject\build-impl.xml" />
+    <property name="ant.file.StamboomProject-impl" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\nbproject\build-impl.xml" />
     <property name="auxiliary.org-netbeans-modules-editor-indent.CodeStyle.project.text-limit-width" value="80" />
     <property name="path.separator" value=";" />
     <property name="ant.junit.enabletestlistenerevents" value="true" />
@@ -151,7 +151,7 @@
     <property name="libs.JAXB-ENDORSED.javadoc" value="" />
     <property name="libs.JWSAntTasks.classpath" value="C:\Program Files\NetBeans 8.0.2\java\ant\extra\org-netbeans-modules-javawebstart-anttasks.jar" />
     <property name="libs.spring-framework300.src" value="" />
-    <property name="empty.dir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\empty" />
+    <property name="empty.dir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\empty" />
     <property name="javafx.deploy.backgroundupdate" value="false" />
     <property name="javafx.disable.concurrent.runs" value="false" />
     <property name="version-output" value="java version &quot;1.8" />
@@ -192,7 +192,7 @@
     <property name="sun.java2d.noddraw" value="true" />
     <property name="javac.processorpath" value="C:\Program Files\NetBeans 8.0.2\ide\modules\ext\mysql-connector-java-5.1.23-bin.jar:C:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar:C:\Program Files\Java\jdk1.8.0_31\jre/lib/javaws.jar:C:\Program Files\Java\jdk1.8.0_31\jre/lib/deploy.jar:C:\Program Files\Java\jdk1.8.0_31\jre/lib/plugin.jar" />
     <property name="javac.compilerargs" value="" />
-    <property name="ant.file" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build.xml" />
+    <property name="ant.file" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build.xml" />
     <property name="libs.beans-binding.maven-pom" value="" />
     <property name="libs.hibernate4-support.javadoc" value="C:\Program Files\NetBeans 8.0.2\java\modules\ext\docs\javax.persistence-2.1.0-doc.zip" />
     <property name="javafx.signing.type" value="self" />
@@ -251,14 +251,14 @@
     <property name="ant.file.type.jfx-impl" value="file" />
     <property name="libs.junit.maven-pom" value="" />
     <property name="libs.eclipselinkmodelgen.javadoc" value="" />
-    <property name="ant.file.jfx-impl" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\nbproject\jfx-impl.xml" />
+    <property name="ant.file.jfx-impl" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\nbproject\jfx-impl.xml" />
     <property name="netbeans.home+have.tests" value="true" />
     <property name="annotation.processing.processor.options" value="" />
     <property name="javafx.deploy.adddesktopshortcut" value="false" />
     <property name="libs.testng.maven-pom" value="" />
     <property name="libs.jaxb.src" value="" />
     <property name="ant.file.type.StamboomProject-impl" value="file" />
-    <property name="work.dir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)" />
+    <property name="work.dir" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)" />
     <property name="compile.on.save.unsupported.javafx" value="true" />
     <property name="libs.jaxb.classpath" value="C:\Program Files\NetBeans 8.0.2\ide\modules\ext\jaxb\jaxb-impl.jar;C:\Program Files\NetBeans 8.0.2\ide\modules\ext\jaxb\jaxb-xjc.jar;C:\Program Files\NetBeans 8.0.2\ide\modules\ext\jaxb\jaxb1-impl.jar;C:\Program Files\NetBeans 8.0.2\ide\modules\ext\jaxb\activation.jar;C:\Program Files\NetBeans 8.0.2\ide\modules\ext\jaxb\api\jaxb-api.jar;C:\Program Files\NetBeans 8.0.2\ide\modules\ext\jaxb\api\jsr173_1.0_api.jar" />
     <property name="do.depend" value="false" />
@@ -274,11 +274,11 @@
     <property name="java.vm.info" value="mixed mode" />
     <property name="nb.junit.batch" value="true" />
     <property name="junit.forkmode" value="perTest" />
-    <property name="ant.file.StamboomV2Docent" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build.xml" />
+    <property name="ant.file.StamboomV2Docent" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build.xml" />
     <property name="user.country.format" value="NL" />
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_31\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_31\jre\classes" />
     <property name="javac.target" value="1.8" />
-    <property name="built-jar.properties" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\built-jar.properties" />
+    <property name="built-jar.properties" value="C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\built-jar.properties" />
     <property name="javafx.deploy.permissionselevated" value="true" />
     <property name="build.test.classes.dir" value="build/test/classes" />
     <property name="src.dir" value="src" />
@@ -315,7 +315,7 @@
     <property name="excludes" value="" />
     <property name="libs.jpa2-persistence.javadoc" value="C:\Program Files\NetBeans 8.0.2\java\modules\ext\docs\javax.persistence-2.1.0-doc.zip" />
     <property name="apple.laf.useScreenMenuBar" value="true" />
-    <property name="java.class.path" value="C:\Program Files\NetBeans 8.0.2\ide\modules\ext\mysql-connector-java-5.1.23-bin.jar;C:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\plugin.jar;C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\classes;C:\Users\Kai\Dropbox\School\Jaar 2\C2J\C2J Stamboom (start)\build\test\classes;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant.jar;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant-junit4.jar" />
+    <property name="java.class.path" value="C:\Program Files\NetBeans 8.0.2\ide\modules\ext\mysql-connector-java-5.1.23-bin.jar;C:\Program Files\NetBeans 8.0.2\platform\modules\ext\junit-4.10.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_31\jre\lib\plugin.jar;C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\classes;C:\Users\Kai\Dropbox\School\Jaar 2\C2J\Stamboom\c2j\C2J Stamboom (start)\build\test\classes;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant-launcher.jar;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant.jar;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant-junit.jar;C:\Program Files\NetBeans 8.0.2\extide\ant\lib\ant-junit4.jar" />
     <property name="libs.absolutelayout.src" value="" />
     <property name="libs.jpa20-persistence.classpath" value="C:\Program Files\NetBeans 8.0.2\java\modules\ext\eclipselink\javax.persistence_2.1.0.v201304241213.jar" />
     <property name="os.version" value="6.3" />
@@ -357,17 +357,21 @@
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
     <property name="javafx.deploy.installpermanently" value="false" />
   </properties>
-  <testcase classname="stamboom.domain.DomeinTest" name="testScheiding" time="0.016" />
+  <testcase classname="stamboom.domain.DomeinTest" name="testHeeftGescheidenOuders" time="0.015" />
   <testcase classname="stamboom.domain.DomeinTest" name="testBeschrijvingGezin" time="0.016" />
-  <testcase classname="stamboom.domain.DomeinTest" name="testAddOngehuwdGezin" time="0.0" />
+  <testcase classname="stamboom.domain.DomeinTest" name="testGetPersoonEnPersonen" time="0.0" />
+  <testcase classname="stamboom.domain.DomeinTest" name="testAddOngehuwdGezin" time="0.016" />
   <testcase classname="stamboom.domain.DomeinTest" name="testSetEnIsHuwelijk" time="0.0" />
-  <testcase classname="stamboom.domain.DomeinTest" name="testHeeftGescheidenOuders" time="0.0" />
-  <testcase classname="stamboom.domain.DomeinTest" name="testAddHuwelijk" time="0.015" />
+  <testcase classname="stamboom.domain.DomeinTest" name="testScheiding" time="0.0" />
   <testcase classname="stamboom.domain.DomeinTest" name="testAddPersoon" time="0.0" />
   <testcase classname="stamboom.domain.DomeinTest" name="testSetOuders" time="0.0" />
   <testcase classname="stamboom.domain.DomeinTest" name="testGetNaam" time="0.0" />
+  <testcase classname="stamboom.domain.DomeinTest" name="testAddHuwelijk" time="0.015">
+    <failure message="ouders ongehuwd" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: ouders ongehuwd
+	at stamboom.domain.DomeinTest.testAddHuwelijk(DomeinTest.java:349)
+</failure>
+  </testcase>
   <testcase classname="stamboom.domain.DomeinTest" name="testGetPersonenMetAchternaam" time="0.0" />
-  <testcase classname="stamboom.domain.DomeinTest" name="testGetPersoonEnPersonen" time="0.0" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

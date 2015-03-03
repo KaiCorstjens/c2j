@@ -1,7 +1,11 @@
 package stamboom.console;
 
+import java.io.File;
+import java.io.IOException;
 import stamboom.domain.*;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import stamboom.util.StringUtilities;
 import stamboom.controller.StamboomController;
 
@@ -41,6 +45,11 @@ public class StamboomConsole {
                 case SHOW_GEZIN:
                     toonGezinsgegevens();
                     break;
+                case SHOW_ADMINISTRATIE:
+                    showAdministratie();
+                    break;
+                case NEW_ADMINISTRATIE:
+                    break;
             }
             choice = kiesMenuItem();
         }
@@ -48,6 +57,34 @@ public class StamboomConsole {
 
     Administratie getAdmin() {
         return controller.getAdministratie();
+    }
+    void newAdministratie()
+    {
+        String filepath = null;
+        while (filepath == null) {
+            String g = readString("Waar wil je het bestand opslaan?");
+        filepath = g;
+        }
+        File f = new File(filepath);
+        try {
+            controller.serialize(f);
+        } catch (IOException ex) {
+            Logger.getLogger(StamboomConsole.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    void showAdministratie()
+    {
+        String filepath = null;
+        while (filepath == null) {
+            String g = readString("Waar is het bestand opgeslagen?");
+        filepath = g;
+        }
+        File f = new File(filepath);
+        try {
+            controller.deserialize(f);
+        } catch (IOException ex) {
+            Logger.getLogger(StamboomConsole.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     void invoerNieuwePersoon() {

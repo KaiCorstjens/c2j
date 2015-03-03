@@ -297,7 +297,6 @@ public class Persoon {
      * @return true als persoon op datum gescheiden is, anders false
      */
     public boolean isGescheidenOp(Calendar datum) {
-        //todo opgave 1
         for (Gezin g : alsOuderBetrokkenIn)
         {
             if(g.getScheidingsdatum().equals(datum))
@@ -317,7 +316,7 @@ public class Persoon {
      * grootouders etc); de persoon zelf telt ook mee
      */
     public int afmetingStamboom() {
-        //todo opgave 2
+        
         return -1;
     }
 

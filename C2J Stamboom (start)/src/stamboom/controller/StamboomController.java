@@ -4,8 +4,19 @@
  */
 package stamboom.controller;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInput;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutput;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.util.logging.Level;
 import stamboom.domain.Administratie;
 import stamboom.storage.IStorageMediator;
 
@@ -41,8 +52,14 @@ public class StamboomController {
      * @throws IOException
      */
     public void serialize(File bestand) throws IOException {
-        //todo opgave 2
-        
+        try (
+                OutputStream file = new FileOutputStream(bestand);
+                OutputStream buffer = new BufferedOutputStream(file);
+                ObjectOutput output = new ObjectOutputStream(buffer);) {
+            output.writeObject(admin);
+        } catch (IOException ex) {
+            System.out.println("Cannot perform output.");
+        }
     }
 
     /**
@@ -52,10 +69,24 @@ public class StamboomController {
      * @throws IOException
      */
     public void deserialize(File bestand) throws IOException {
-        //todo opgave 2
-  
+        try (
+                InputStream file = new FileInputStream(bestand);
+                InputStream buffer = new BufferedInputStream(file);
+                ObjectInput input = new ObjectInputStream(buffer);) {
+            
+            admin = (Administratie) input.readObject();
+            /*List<String> recoveredQuarks = (List<String>) input.readObject();
+            //display its data
+            for (String quark : recoveredQuarks) {
+                System.out.println("Recovered Quark: " + quark);
+            } */
+        } catch (ClassNotFoundException ex) {
+            System.out.println("Cannot perform input. Class not found.");
+        } catch (IOException ex) {
+            System.out.println("Cannot perform input.");
+        }
     }
-    
+
     // opgave 4
     private void initDatabaseMedium() throws IOException {
 //        if (!(storageMediator instanceof DatabaseMediator)) {
@@ -66,7 +97,7 @@ public class StamboomController {
 //            storageMediator = new DatabaseMediator(props);
 //        }
     }
-    
+
     /**
      * administratie wordt vanuit standaarddatabase opgehaald
      *
