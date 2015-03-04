@@ -53,7 +53,7 @@ public class StamboomController {
      */
     public void serialize(File bestand) throws IOException {
         try (
-                OutputStream file = new FileOutputStream(bestand);
+                OutputStream file = new FileOutputStream(bestand.getPath());
                 OutputStream buffer = new BufferedOutputStream(file);
                 ObjectOutput output = new ObjectOutputStream(buffer);) {
             output.writeObject(admin);

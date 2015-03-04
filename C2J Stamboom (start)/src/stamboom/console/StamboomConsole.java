@@ -49,6 +49,10 @@ public class StamboomConsole {
                     showAdministratie();
                     break;
                 case NEW_ADMINISTRATIE:
+                    newAdministratie();
+                    break;
+                case SHOW_STAMBOOM:
+                    showStamboom();
                     break;
             }
             choice = kiesMenuItem();
@@ -57,6 +61,16 @@ public class StamboomConsole {
 
     Administratie getAdmin() {
         return controller.getAdministratie();
+    }
+    
+    void showStamboom()
+    {
+        Persoon p = selecteerPersoon();
+        if (p == null) {
+            System.out.println("persoon onbekend");
+        } else {
+            System.out.println(p.stamboomAlsString());
+        }
     }
     void newAdministratie()
     {

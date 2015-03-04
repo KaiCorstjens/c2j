@@ -315,11 +315,39 @@ public class Persoon {
      * @return het aantal personen in de stamboom van deze persoon (ouders,
      * grootouders etc); de persoon zelf telt ook mee
      */
-    public int afmetingStamboom() {
+    public int afmetingStamboom() 
+    {
+        /*int counter =0;
         
-        return -1;
+       
+        if (this.getOuderlijkGezin() == null) 
+        {
+            return counter;
+        } 
+        else 
+        {
+            int ouder1 =0;
+            int ouder2 =0;
+            
+            if(this.getOuderlijkGezin().getOuder2()!=null)
+            {
+                counter = counter +2;       
+                ouder1 = this.getOuderlijkGezin().getOuder1().afmetingStamboom();
+                ouder2 = this.getOuderlijkGezin().getOuder2().afmetingStamboom();
+                counter = counter + ouder1 + ouder2;
+            }
+            else
+            {
+                counter = counter +1;
+                ouder1 = this.getOuderlijkGezin().getOuder1().afmetingStamboom();
+                counter = counter + ouder1;
+            }   
+            return counter;
+        }*/
+        int counter;
+        counter = generatieLijst(this).size()+1;
+        return counter;
     }
-
     /**
      * de lijst met de items uit de stamboom van deze persoon wordt toegevoegd
      * aan lijst, dat wil zeggen dat begint met de toevoeging van de
@@ -334,8 +362,48 @@ public class Persoon {
      */
     void voegJouwStamboomToe(ArrayList<PersoonMetGeneratie> lijst, int g) {
         //todo opgave 2
+        
     }
 
+    public ArrayList<Persoon> generatieLijst(Persoon persoon)
+    {
+        ArrayList<Persoon> generatielijst = new ArrayList();
+        Persoon p = persoon;
+        //generatielijst.add(p);
+        if(p != null)
+        {
+            Gezin g = p.getOuderlijkGezin();
+            Persoon p1 = null;
+            Persoon p2 = null;
+            if (g != null)
+            {
+                p1 = g.getOuder1();
+                p2 = g.getOuder2();
+            }
+            
+            if (p1 != null)
+            {
+            generatielijst.add(p1);
+            ArrayList<Persoon> nextGeneratie = generatieLijst(p1);
+            for (Persoon pers : nextGeneratie)
+            {
+                
+                generatielijst.add(pers);
+            }
+            }
+            if (p2 != null)
+            {
+                generatielijst.add(p2);
+            ArrayList<Persoon> nextGeneratie = generatieLijst(p2);
+            for (Persoon pers : nextGeneratie)
+            {
+                generatielijst.add(pers);
+            }
+            }
+        }
+        
+        return generatielijst;
+    }
     /**
      *
      * @return de stamboomgegevens van deze persoon in de vorm van een String:
@@ -362,7 +430,14 @@ public class Persoon {
     public String stamboomAlsString() {
         StringBuilder builder = new StringBuilder();
         //todo opgave 2
-
+        builder.append(this.toString()+System.getProperty("line.separator") );
+        ArrayList<Persoon> stamboomLijst = generatieLijst(this);
+        for (Persoon p : stamboomLijst)
+        {
+            builder.append(p.toString()+System.getProperty("line.separator") );
+            //builder = builder+ p.toString();
+        }
         return builder.toString();
+        //Goede volgorde?
     }
 }

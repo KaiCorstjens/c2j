@@ -9,10 +9,10 @@ public enum MenuItem {
     SCHEIDING("registreer scheiding"),
     SHOW_PERS("toon gegevens persoon"),
     SHOW_GEZIN("toon gegevens gezin"),
-    SHOW_ADMINISTRATIE("toon gegevens administratie"),
-    NEW_ADMINISTRATIE("");
-    
-    
+    SHOW_ADMINISTRATIE("Laad gegevens administratie"),
+    NEW_ADMINISTRATIE("Sla nieuwe administratie op"),
+    SHOW_STAMBOOM("Laat stamboom zien");
+
     private final String omschr;
 
     private MenuItem(String omschr) {
@@ -20,8 +20,8 @@ public enum MenuItem {
     }
 
     /**
-     * @return  the omschr
-     * @uml.property  name="omschr"
+     * @return the omschr
+     * @uml.property name="omschr"
      */
     public String getOmschr() {
         return omschr;
