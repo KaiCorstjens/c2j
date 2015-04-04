@@ -1,27 +1,44 @@
 package stamboom.domain;
 
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-public class Administratie {
+public class Administratie implements Serializable {
 
     //************************datavelden*************************************
     private int nextGezinsNr;
     private int nextPersNr;
     private final List<Persoon> personen;
     private final List<Gezin> gezinnen;
+    private transient ObservableList<Persoon> observablePersonen;
+    private transient ObservableList<Gezin> observableGezinnen;
 
     //***********************constructoren***********************************
     /**
-     * er wordt een lege administratie aangemaakt.
-     * personen en gezinnen die in de toekomst zullen worden gecreeerd, worden
-     * (apart) opvolgend genummerd vanaf 1
+     * er wordt een lege administratie aangemaakt. personen en gezinnen die in
+     * de toekomst zullen worden gecreeerd, worden (apart) opvolgend genummerd
+     * vanaf 1
      */
     public Administratie() {
         //todo opgave 1
         this.personen = new ArrayList<>();
         this.gezinnen = new ArrayList<>();
-        this.nextGezinsNr =1;
-        this.nextPersNr =1;
+        this.nextGezinsNr = 1;
+        this.nextPersNr = 1;
+        this.observablePersonen = FXCollections.observableList(this.personen);
+        this.observableGezinnen = FXCollections.observableList(this.gezinnen);
+
+    }
+
+    private void readObject(ObjectInputStream is)
+            throws IOException, ClassNotFoundException {
+        is.defaultReadObject();
+        this.observablePersonen = FXCollections.observableList(this.personen);
+        this.observableGezinnen = FXCollections.observableList(this.gezinnen);
     }
 
     //**********************methoden****************************************
@@ -29,10 +46,10 @@ public class Administratie {
      * er wordt een persoon met de gegeven parameters aangemaakt; de persoon
      * krijgt een uniek nummer toegewezen, en de persoon is voortaan ook bij het
      * (eventuele) ouderlijk gezin bekend. Voor de voornamen, achternaam en
-     * gebplaats geldt dat de eerste letter naar een hoofdletter en de resterende
-     * letters naar kleine letters zijn geconverteerd; het tussenvoegsel is in
-     * zijn geheel geconverteerd naar kleine letters; overbodige spaties zijn
-     * verwijderd
+     * gebplaats geldt dat de eerste letter naar een hoofdletter en de
+     * resterende letters naar kleine letters zijn geconverteerd; het
+     * tussenvoegsel is in zijn geheel geconverteerd naar kleine letters;
+     * overbodige spaties zijn verwijderd
      *
      * @param geslacht
      * @param vnamen vnamen.length>0; alle strings zijn niet leeg
@@ -42,9 +59,9 @@ public class Administratie {
      * @param gebplaats niet leeg
      * @param ouderlijkGezin mag de waarde null (=onbekend) hebben
      *
-     * @return de nieuwe persoon.
-     * Als de persoon al bekend was (op basis van combinatie van getNaam(),
-     * geboorteplaats en geboortedatum), wordt er null geretourneerd.
+     * @return de nieuwe persoon. Als de persoon al bekend was (op basis van
+     * combinatie van getNaam(), geboorteplaats en geboortedatum), wordt er null
+     * geretourneerd.
      */
     public Persoon addPersoon(Geslacht geslacht, String[] vnamen, String anaam,
             String tvoegsel, Calendar gebdat,
@@ -68,18 +85,16 @@ public class Administratie {
         }
 
         //todo opgave 1
-        Persoon persoon = new Persoon(this.nextPersNr,vnamen,anaam,tvoegsel,gebdat,gebplaats, geslacht,ouderlijkGezin);
-        for(Persoon p:personen)
-        {
-            if(p.getNaam().equals(persoon.getNaam()) && p.getGebDat().equals(persoon.getGebDat()) && p.getGebPlaats().equals(persoon.getGebPlaats()))
-            {
+        Persoon persoon = new Persoon(this.nextPersNr, vnamen, anaam, tvoegsel, gebdat, gebplaats, geslacht, ouderlijkGezin);
+        for (Persoon p : personen) {
+            if (p.getNaam().equals(persoon.getNaam()) && p.getGebDat().equals(persoon.getGebDat()) && p.getGebPlaats().equals(persoon.getGebPlaats())) {
                 return null;
             }
         }
         nextPersNr++;
-        personen.add(persoon);
+        this.observablePersonen.add(persoon);
         return persoon;
-        
+
     }
 
     /**
@@ -91,55 +106,49 @@ public class Administratie {
      * @param ouder1
      * @param ouder2 mag null zijn
      *
-     * @return het nieuwe gezin. null als ouder1 = ouder2 of als een van de volgende
-     * voorwaarden wordt overtreden:
-     * 1) een van de ouders is op dit moment getrouwd
-     * 2) het koppel vormt al een ander gezin
+     * @return het nieuwe gezin. null als ouder1 = ouder2 of als een van de
+     * volgende voorwaarden wordt overtreden: 1) een van de ouders is op dit
+     * moment getrouwd 2) het koppel vormt al een ander gezin
      */
     public Gezin addOngehuwdGezin(Persoon ouder1, Persoon ouder2) {
         if (ouder1 == ouder2) {
             return null;
         }
-        if (ouder1 ==null && ouder2 == null)
-        {
+        if (ouder1 == null && ouder2 == null) {
             return null;
         }
         if (ouder1.getGebDat().compareTo(Calendar.getInstance()) > 0) {
             return null;
         }
-       if(ouder2!=null)
-       {
-        if (ouder2.getGebDat().compareTo(Calendar.getInstance()) > 0) {
-            return null;
+        if (ouder2 != null) {
+            if (ouder2.getGebDat().compareTo(Calendar.getInstance()) > 0) {
+                return null;
+            }
         }
-       }
         Calendar nu = Calendar.getInstance();
         if (ouder1.isGetrouwdOp(nu) || (ouder2 != null
                 && ouder2.isGetrouwdOp(nu))
-                || ongehuwdGezinBestaat(ouder1, ouder2)) 
-        {
+                || ongehuwdGezinBestaat(ouder1, ouder2)) {
             return null;
         }
 
         Gezin gezin = new Gezin(nextGezinsNr, ouder1, ouder2);
         nextGezinsNr++;
-        gezinnen.add(gezin);
-        if(ouder1!=null)
-        {
-           ouder1.wordtOuderIn(gezin); 
+        this.observableGezinnen.add(gezin);
+        if (ouder1 != null) {
+            ouder1.wordtOuderIn(gezin);
         }
-        if(ouder2!=null)
-        {
+        if (ouder2 != null) {
             ouder2.wordtOuderIn(gezin);
         }
         return gezin;
     }
 
     /**
-     * Als het ouderlijk gezin van persoon nog onbekend is dan wordt
-     * persoon een kind van ouderlijkGezin, en tevens wordt persoon als kind
-     * in dat gezin geregistreerd. Als de ouders bij aanroep al bekend zijn,
-     * verandert er niets
+     * Als het ouderlijk gezin van persoon nog onbekend is dan wordt persoon een
+     * kind van ouderlijkGezin, en tevens wordt persoon als kind in dat gezin
+     * geregistreerd. Als de ouders bij aanroep al bekend zijn, verandert er
+     * niets
      *
      * @param persoon
      * @param ouderlijkGezin
@@ -163,9 +172,9 @@ public class Administratie {
     }
 
     /**
-     * registreert het huwelijk, mits gezin nog geen huwelijk is en beide
-     * ouders op deze datum mogen trouwen (pas op: het is niet toegestaan dat een
-     * ouder met een toekomstige (andere) trouwdatum trouwt.)
+     * registreert het huwelijk, mits gezin nog geen huwelijk is en beide ouders
+     * op deze datum mogen trouwen (pas op: het is niet toegestaan dat een ouder
+     * met een toekomstige (andere) trouwdatum trouwt.)
      *
      * @param gezin
      * @param datum de huwelijksdatum
@@ -201,28 +210,28 @@ public class Administratie {
      */
     public Gezin addHuwelijk(Persoon ouder1, Persoon ouder2, Calendar huwdatum) {
         //todo opgave 1
-        
-        if (!(ouder1.kanTrouwenOp(huwdatum)&&ouder2.kanTrouwenOp(huwdatum))||ouder1==ouder2)
-        {
+
+        if (ouder1 == ouder2) {
             return null;
         }
-         Gezin g1 =ouder1.heeftOngehuwdGezinMet(ouder2);
-        if(g1!=null)
-        {
-            g1.setHuwelijk(huwdatum);
-            return g1;
+        if ((!ouder1.kanTrouwenOp(huwdatum)) || ((ouder2 != null) && (!ouder2.kanTrouwenOp(huwdatum)))) {
+            return null;
         }
-        else
-        {
-            Gezin g = new Gezin(nextGezinsNr,ouder1,ouder2);
-            g.setHuwelijk(huwdatum);
-            ouder1.getAlsOuderBetrokkenIn().add(g);
-            ouder2.getAlsOuderBetrokkenIn().add(g);
-            this.gezinnen.add(g);
-            nextGezinsNr++;
-            return g;
+        Gezin ongehuwdGezin = ouder1.heeftOngehuwdGezinMet(ouder2);
+        if (ongehuwdGezin != null) {
+            ongehuwdGezin.setHuwelijk(huwdatum);
+            return ongehuwdGezin;
         }
-        
+        Gezin gezin = new Gezin(this.nextGezinsNr, ouder1, ouder2);
+        ouder1.wordtOuderIn(gezin);
+        if (ouder2 != null) {
+            ouder2.wordtOuderIn(gezin);
+        }
+        this.observableGezinnen.add(gezin);
+        this.nextGezinsNr += 1;
+        gezin.setHuwelijk(huwdatum);
+        return gezin;
+
     }
 
     /**
@@ -250,10 +259,8 @@ public class Administratie {
     public Persoon getPersoon(int nr) {
         //todo opgave 1
         //aanname: er worden geen personen verwijderd
-        for(Persoon p:this.personen)
-        {
-            if(p.getNr()==nr)
-            {
+        for (Persoon p : this.personen) {
+            if (p.getNr() == nr) {
                 return p;
             }
         }
@@ -267,11 +274,9 @@ public class Administratie {
      */
     public ArrayList<Persoon> getPersonenMetAchternaam(String achternaam) {
         //todo opgave 1
-        ArrayList<Persoon> pers =new ArrayList<>();
-        for(Persoon p:this.personen)
-        {
-            if(p.getAchternaam().equalsIgnoreCase(achternaam))
-            {
+        ArrayList<Persoon> pers = new ArrayList<>();
+        for (Persoon p : this.personen) {
+            if (p.getAchternaam().equalsIgnoreCase(achternaam)) {
                 pers.add(p);
             }
         }
@@ -282,9 +287,8 @@ public class Administratie {
      *
      * @return de geregistreerde personen
      */
-    public List<Persoon> getPersonen() {
-        // todo opgave 1
-        return (List<Persoon>) Collections.unmodifiableList(personen);
+    public ObservableList<Persoon> getPersonen() {
+        return FXCollections.unmodifiableObservableList(this.observablePersonen);
     }
 
     /**
@@ -301,18 +305,15 @@ public class Administratie {
     public Persoon getPersoon(String[] vnamen, String anaam, String tvoegsel,
             Calendar gebdat, String gebplaats) {
         //todo opgave 1
-        for(Persoon p:personen)
-        {
-        String initialen="";
-        for(String s : vnamen)
-        {
-            initialen += s.substring(0,1)+".";
-        }
-            
-            if(p.getInitialen().equalsIgnoreCase(initialen) && p.getTussenvoegsel().equalsIgnoreCase(tvoegsel) && p.getAchternaam().equalsIgnoreCase(anaam) && p.getGebDat().equals(gebdat) &&p.getGebPlaats().equalsIgnoreCase(gebplaats))
-                    {
-                       return p; 
-                    }
+        for (Persoon p : personen) {
+            String initialen = "";
+            for (String s : vnamen) {
+                initialen += s.substring(0, 1) + ".";
+            }
+
+            if (p.getInitialen().equalsIgnoreCase(initialen) && p.getTussenvoegsel().equalsIgnoreCase(tvoegsel) && p.getAchternaam().equalsIgnoreCase(anaam) && p.getGebDat().equals(gebdat) && p.getGebPlaats().equalsIgnoreCase(gebplaats)) {
+                return p;
+            }
         }
         return null;
     }
@@ -321,8 +322,8 @@ public class Administratie {
      *
      * @return de geregistreerde gezinnen
      */
-    public List<Gezin> getGezinnen() {
-        return null;
+    public ObservableList<Gezin> getGezinnen() {
+        return FXCollections.unmodifiableObservableList(this.observableGezinnen);
     }
 
     /**
@@ -334,7 +335,7 @@ public class Administratie {
     public Gezin getGezin(int gezinsNr) {
         // aanname: er worden geen gezinnen verwijderd
         if (gezinnen != null && 1 <= gezinsNr && 1 <= gezinnen.size()) {
-            return gezinnen.get(gezinsNr-1 );
+            return gezinnen.get(gezinsNr - 1);
         }
         return null;
     }
